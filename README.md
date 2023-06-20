@@ -80,3 +80,18 @@ Feb 24 13:21:13 ubuntu systemd[1]: collector.service: Supervising process 783287
 Feb 24 13:21:13 ubuntu systemd[1]: Started Collector Service..
 root@ubuntu :/etc/systemd/system# systemctl stop collector
 ```
+
+# 파이썬의 기본 실행 버젼 설정
+```
+sudo update-alternatives --config python
+Will show you an error:
+
+update-alternatives: error: no alternatives for python3 
+You need to update your update-alternatives , then you will be able to set your default python version.
+
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.4 1
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2
+Then run :
+
+sudo update-alternatives --config python
+```
