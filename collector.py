@@ -6,8 +6,8 @@ import socket
 
 app = Flask(__name__)
 host_name = socket.gethostname()
-resource_name = "eimmo-batch-vms"
-service_name = "eimmo-batch-vms-worker3"
+resource_name = "eimmo-batch-vms" # 리소스 그룹 이름
+service_name = "eimmo-batch-vms-worker3" # 서비스 이름 (호스트 이름)
 
 
 def get_machine_cpu():
