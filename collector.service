@@ -1,0 +1,20 @@
+[Unit]
+Description=Collector Service.
+Wants=network.target
+After=network.target
+
+[Service]
+Type=forking
+WorkingDirectory=/opt/collector/
+Environment=PATH=/opt/collector/venv/bin:$PATH
+Environment=PYTHONPATH=/opt/collector/venv/lib/python3.8/site-packages:$PYTHONPATH
+ExecStart=/bin/bash -c 'source /opt/collector/venv/bin/activate && python /opt/collector/collector.py'
+Restart=on-failure
+RestartSec=20s
+PIDFile=/var/run/collector.pid
+StandardOutput=file:/opt/collector/run.log
+StandardError=file:/opt/collector/error.log
+ExecStop=
+
+[Install]
+WantedBy=multi-user.target
