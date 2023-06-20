@@ -123,8 +123,7 @@ def main():
     app.run(host="0.0.0.0",port=5001)
 
 
-if __name__ == '__main__':
-
+def run_as_fork():
     pid = os.fork()
     if pid > 0:
         exit(0)
@@ -152,3 +151,45 @@ if __name__ == '__main__':
                 write.write(str(os.getpid()))
 
             main()
+
+        os.umask(0)
+
+        pid = os.fork()
+        if pid > 0:
+            exit(0)
+        else:
+            sys.stdin.flush()
+            sys.stdout.flush()
+
+            si = open(os.devnull, 'r')
+            so = open(os.devnull, 'a+')
+            se = open(os.devnull, 'a+')
+
+            os.dup2(si.fileno(), sys.stdin.fileno())
+            os.dup2(so.fileno(), sys.stdout.fileno())
+            os.dup2(se.fileno(), sys.stderr.fileno())
+
+            with open("/var/run/collector.pid","w") as write:
+                write.write(str(os.getpid()))
+
+            main()
+
+
+def print_usage():
+    print("python collector.py [options]")
+    print("------------------------------")
+    print("options:")
+    print("  -d : run as forked daemon")
+    print("  -p : run as self process")
+
+
+if __name__ == '__main__':
+    args = sys.argv[1:]
+    if len(args) == 0:
+        run_as_fork()
+    if args[0] == "-d":
+        run_as_fork()
+    elif args[0] == "-p":
+        main()
+    else:
+        print_usage()
