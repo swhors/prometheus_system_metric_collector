@@ -2,7 +2,7 @@
 
 # 실행환경 구성
 ```
-simpson@ububtu :~/bin$ sudo apt install python3.8-venv
+simpson@ubuntu :~/bin$ sudo apt install python3.8-venv
 Reading package lists... Done
 Building dependency tree       
 Reading state information... Done
@@ -18,17 +18,17 @@ Selecting previously unselected package python3.8-venv.
 Preparing to unpack .../python3.8-venv_3.8.10-0ubuntu1~20.04.6_amd64.deb ...
 Unpacking python3.8-venv (3.8.10-0ubuntu1~20.04.6) ...
 Setting up python3.8-venv (3.8.10-0ubuntu1~20.04.6) ...
-simpson@ububtu :~/bin$ python -m venv venv
-simpson@ububtu :~/bin$ source venv/bin/activate
-simpson@ububtu :~/bin$ python -m pip install pip==9.0.3
-simpson@ububtu :~/bin$ pip install -r requirements.txt
+simpson@ubuntu :~/bin$ python -m venv venv
+simpson@ubuntu :~/bin$ source venv/bin/activate
+simpson@ubuntu :~/bin$ python -m pip install pip==9.0.3
+simpson@ubuntu :~/bin$ pip install -r requirements.txt
 ```
 
 # 서비스 등록
 ```
-simpson@ububtu :~/$sudo mkdir -p /opt/collector
-simpson@ububtu :~/$sudo cp ./bin/collector /opt/collector
-simpson@ububtu :~/$sudo su - && cd /opt/collector
+simpson@ubuntu :~/$sudo mkdir -p /opt/collector
+simpson@ubuntu :~/$sudo cp ./bin/collector /opt/collector
+simpson@ubuntu :~/$sudo su - && cd /opt/collector
 root@ubuntu :/opt/collector$ apt install python3.8-venv gcc python3-dev
 root@ubuntu :/opt/collector$ python -m venv venv
 root@ubuntu :/opt/collector$ source venv/bin/activate
@@ -53,8 +53,8 @@ Feb 24 13:21:13 ubuntu systemd[1]: Starting Collector Service....
 Feb 24 13:21:13 ubuntu systemd[1]: collector.service: Supervising process 783287 which is not our child. We'll most likely n>
 Feb 24 13:21:13 ubuntu systemd[1]: Started Collector Service..
 root@ubuntu :/etc/systemd/system# systemctl stop collector:~/$sudo mkdir -p /opt/collector
-simpson@ububtu :~/$sudo cp ./bin/collector /opt/collector
-simpson@ububtu :~/$sudo su - && cd /opt/collector
+simpson@ubuntu :~/$sudo cp ./bin/collector /opt/collector
+simpson@ubuntu :~/$sudo su - && cd /opt/collector
 root@ubuntu :/opt/collector$ apt install python3.8-venv gcc python3-dev
 root@ubuntu :/opt/collector$ python -m venv venv
 root@ubuntu :/opt/collector$ source venv/bin/activate
